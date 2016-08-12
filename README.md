@@ -1,2 +1,2 @@
-# salus
+# Salus
 Salus Software
