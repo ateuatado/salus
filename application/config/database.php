@@ -76,10 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => 'mv081324***',
-	'database' => 'neuro',
-	'dbdriver' => 'postgre',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'salus',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -92,6 +92,5 @@ $db['default'] = array(
 	'compress' => FALSE,
 	'stricton' => FALSE,
 	'failover' => array(),
-	'save_queries' => TRUE,
-	'port'=>5432
+	'save_queries' => TRUE
 );
