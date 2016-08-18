@@ -1,3 +1,13 @@
+<?php 
+$nome_uri = $this->uri->segment(1);
+function trocaActive($nome_uri,$pagina)
+{
+  if($nome_uri=='' and $pagina=='home')
+    return 'active';
+  if($nome_uri==$pagina)
+    return 'active';
+}
+?>
 <html>
     <head>
     <meta charset="utf-8">
@@ -21,22 +31,22 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active">
+            <li class="<?php echo trocaActive($nome_uri,'');?>">
               <a href="<?php echo base_url(); ?>">Home</a>
             </li>
-            <li>
-              <a href="#">Contacts</a>
+            <li class="<?php echo trocaActive($nome_uri,'candidatos');?>">
+              <a href="<?php echo base_url();?>candidatos">Candidatos</a>
             </li>
-            <li>
-              <a href="#">Contacts</a>
+            <li class="<?php echo trocaActive($nome_uri,'pacientes');?>">
+              <a href="<?php echo base_url();?>pacientes">Pacientes</a>
             </li>
-            <li>
-              <a href="#">Contacts</a>
+            <li class="<?php echo trocaActive($nome_uri,'estagiarios');?>">
+              <a href="<?php echo base_url();?>estagiarios">Estagiários</a>
             </li>
-            <li>
-              <a href="#">Contacts</a>
+            <li class="<?php echo trocaActive($nome_uri,'adm');?>">
+              <a href="<?php echo base_url();?>adm">Adm</a>
             </li>
-            <li>
+            <li class="<?php echo trocaActive($nome_uri,'login');?>">
             <?php if($this->session->userdata('id_usuario')) { ?>
               <a href="<?php echo base_url();?>login/sair">Sair</a>
               <?php }else{ ?>
