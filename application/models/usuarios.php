@@ -5,7 +5,7 @@ class  Usuarios extends CI_Model
 	{
 		if(!isset($email) or !isset($senha))
 			return false;	
-		$q = $this->db->query("SELECT id_usuario, nome, ra FROM usuarios WHERE email='".trim($email)."' AND senha='".trim($senha)."' LIMIT 1")->result_array();
+		$q = $this->db->query("SELECT id_usuario, nome, ra, tipo_usuario FROM usuarios WHERE email='".trim($email)."' AND senha='".trim($senha)."' LIMIT 1")->result_array();
 		return $q;
 	}
 
