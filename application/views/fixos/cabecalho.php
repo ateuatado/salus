@@ -43,9 +43,11 @@ function trocaActive($nome_uri,$pagina)
             <li class="<?php echo trocaActive($nome_uri,'estagiarios');?>">
               <a href="<?php echo base_url();?>estagiarios">Estagiários</a>
             </li>
-            <li class="<?php echo trocaActive($nome_uri,'adm');?>">
-              <a href="<?php echo base_url();?>adm">Adm</a>
+            <?php if($this->session->userdata('tipo_usuario')==4 or $this->session->userdata('tipo_usuario')==3){?>
+            <li class="<?php echo trocaActive($nome_uri,'admin');?>">
+              <a href="<?php echo base_url();?>admin">Adm</a>
             </li>
+            <?php }?>
             <li class="<?php echo trocaActive($nome_uri,'login');?>">
             <?php if($this->session->userdata('id_usuario')) { ?>
               <a href="<?php echo base_url();?>login/sair">Sair</a>

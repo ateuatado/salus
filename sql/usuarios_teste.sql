@@ -1,0 +1,4 @@
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `ra`, `tipo_usuario`) VALUES (NULL, 'TecLab', 'teclab@umc.br', '202cb962ac59075b964b07152d234b70', '123456789', '1');
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `ra`, `tipo_usuario`) VALUES (NULL, 'Estagiario', 'estagiario@umc.br', '202cb962ac59075b964b07152d234b70', '123456790', '1');
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `ra`, `tipo_usuario`) VALUES (NULL, 'Supervisor', 'supervisor@umc.br', '202cb962ac59075b964b07152d234b70', '123456791', '1');
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `ra`, `tipo_usuario`) VALUES (NULL, 'Adm', 'adm@umc.br', '202cb962ac59075b964b07152d234b70', '123456792', '1');
