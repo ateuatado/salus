@@ -7,7 +7,12 @@
           <div class="col-md-12">
             <div class="well">
               <h2>Pacientes</h2>
-              <p>Só para saber que estamos na pacientes...</p>
+
+              <?php foreach($pacientes as $paciente): ?>
+
+                  <a href="<?php base_url(); ?>/pacientes/consultar/<?php echo $paciente->get_id_paciente(); ?>"><?php echo $paciente->get_nome_completo(); ?></a>
+
+              <?php endforeach; ?>
             </div>
           </div>
         </div>

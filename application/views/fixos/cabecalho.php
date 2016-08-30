@@ -11,14 +11,15 @@ function trocaActive($nome_uri,$pagina)
 <html>
     <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="<?php echo base_url(); ?>front/js/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>front/js/bootstrap.js"></script>
     <link href="<?php echo base_url(); ?>front/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>front/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>front/css/base.css" rel="stylesheet" type="text/css">
+    <title>Salus</title>
   </head>
   <body>
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-default navbar-static-top" style="background:none;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
@@ -27,7 +28,7 @@ function trocaActive($nome_uri,$pagina)
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><span>Neuro</span></a>
+          <a class="navbar-brand" href="#"><span>Salus</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">

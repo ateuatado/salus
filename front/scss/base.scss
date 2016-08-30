@@ -1,0 +1,84 @@
+$primary-color: #339ACC;
+$text-color: #363636;
+$text-color2: #96A3B6;
+body{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.prontuario{
+    .prontuario-topo{
+
+        height: 70px;
+        line-height: 70px;
+        background: #F7F8FB;
+        border-bottom: 1px solid #e7ebf3;
+
+        .breadcrumb{
+            padding: 0;
+            margin: 0;
+            background: none;
+            height: 70px;
+           
+            li{
+                height: initial;
+                font-size: 17px;
+
+                a{
+                    color: $primary-color;
+                }
+
+                &.active{
+                    color: $text-color;
+                }
+            }
+        }
+
+        .btn-group{
+            float: right;
+            margin-top: 17px;            
+        }
+    }
+
+    .prontuario-info{
+        line-height: 50px;
+        height: 50px;
+        border-bottom: 1px solid #e7ebf3;
+
+        .prontuario-criado-por{
+            p{
+                margin: 0;
+                font-size: 15px;
+                font-weight: 400;
+                color: $text-color2;
+            }
+        }
+    }
+
+    .prontuario-conteudo{
+
+        h4{
+            margin: 0;
+            padding: 0;
+        }
+
+        form{
+            margin:0;
+        }
+
+        .grupo-pront{
+            padding: 40px 0;
+            color: $text-color;
+            border-bottom: 1px solid #e7ebf3;
+            
+            h4.title{
+                margin: 0;
+                font-size: 17px;
+                font-weight: 400;
+                color: $primary-color;
+                
+            }
+        }
+
+    }
+}
