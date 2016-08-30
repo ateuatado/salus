@@ -8,7 +8,7 @@
                 <legend align="center"><h2>Criar Bateria</h2></legend>
                     <div class="col-md-7" align="right">
                 
-                                <?php 
+                        <?php 
                             echo form_open('baterias/criar_page'); 
                             
                             echo form_label('Nome Bateria: ');

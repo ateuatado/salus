@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$d['teste'] = $this->session->userdata();
-		$this->load->view('home',$d); 
+		$this->load->view('login',$d); 
 	}
 
 
