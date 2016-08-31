@@ -16,7 +16,7 @@ class Pacientes extends CI_Controller {
 		$this->load->view( 'pacientes', $data ); 
 	}
 
-	public function consultar( $id_paciente = null ) 
+	public function consultar( $id_paciente = null, $mensagem = null) 
 	{
 
 		$paciente = $this->paciente->consultarPaciente( $id_paciente );
@@ -27,6 +27,7 @@ class Pacientes extends CI_Controller {
 
 				$data['paciente'] = $paciente;
 				$data['prontuarios'] = $this->prontuario->consultar( null, $paciente );
+				$data['mensagem'] = $mensagem;
 
 				$this->load->view( 'paciente_unico', $data );
 

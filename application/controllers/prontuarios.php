@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// remover nos dois 
-// editar so dentro
+// botao remover nos dois  - feito
+// editar so dentro - feito
 // usar tabs para consultas e prontuarios
 // fazer um overview na pagina home quando estiver logado
 // sistema redirectiona para a pagina login quando nao estiver logado
@@ -86,6 +86,23 @@ class Prontuarios extends CI_Controller {
             redirect('prontuarios/editar/' . $this->input->post('id_prontuario') . '/sucesso' );
         } else {
             redirect('prontuarios/editar/' . $this->input->post('id_prontuario') . '/erro' );
+        }
+
+    }
+
+    public function remover( $id_prontuario = null, $id_paciente = null) {
+
+        if( !empty($id_prontuario) && !empty($id_paciente) ) {
+
+            $resultado = $this->prontuario->remover( $id_prontuario );
+            if($resultado == true) {
+                redirect('pacientes/consultar/' . $id_paciente . '/sucesso' );
+            } else {
+                redirect('pacientes/consultar/' . $id_paciente . '/erro' );
+            }
+            
+        } else {
+            show_404();
         }
 
     }

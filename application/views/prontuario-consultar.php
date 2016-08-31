@@ -23,6 +23,15 @@
                 <div class="col-md-3">
                     <div class="btn-group" role="group" aria-label="...">
                         <a class="btn btn-default" href="<?php echo base_url('prontuarios/editar/' . $prontuario->get_id_prontuario() ); ?>">Editar</a>
+                        
+                        <button class="btn btn-default" id="remover_prontuario" data-content='
+                        
+                            Você realmente deseja remover esse prontuario? </br></br> 
+                            <button class="btn btn-default" id="cancelar_remover_prontuario" style="margin-right: 5px;">Cancelar</button> 
+                            <a class="btn btn-danger" href="<?php echo base_url('prontuarios/remover/' . $prontuario->get_id_prontuario() . '/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Remover</a>   
+
+                        '>Remover</button>
+                        
                         <a class="btn btn-default" href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Voltar</a>
                     </div>
                 </div> <!-- cold-md-3 -->

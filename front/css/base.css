@@ -2,11 +2,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+*:focus {
+  outline: none; }
+
 .prontuario .prontuario-topo {
   height: 70px;
   line-height: 70px;
   background: #F7F8FB;
   border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-topo #remover_prontuario:focus {
+    outline: none; }
   .prontuario .prontuario-topo .breadcrumb {
     padding: 0;
     margin: 0;
