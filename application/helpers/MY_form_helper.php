@@ -16,8 +16,8 @@ if ( ! function_exists('pront_radio_input'))
             // )  
 
             $selected_input = ( $selected == $field['id_opcoes'] ) ? 'checked=""' : '';
-
-            $html .= '<label class="radio-inline">';
+            
+            $html .= '<label class="radio-inline pront_radio_input">';
             $html .= '<input type="radio" name="'.$field['campo'].'" value="'.$field['id_opcoes'].'"'. $selected_input .'> ' . $field['opcao'];
             $html .= '</label>';
 

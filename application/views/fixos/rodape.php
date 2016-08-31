@@ -10,5 +10,6 @@
 </footer>-->
 <script type="text/javascript" src="<?php echo base_url(); ?>front/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>front/js/bootstrap.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>front/js/config.js"></script>
 </body>
 </html>
