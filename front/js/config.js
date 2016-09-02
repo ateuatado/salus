@@ -11,9 +11,12 @@ $('[data-toggle="popover"]').on('shown.bs.popover', function(e) {
     
     // Quando clicar em cancelar esconder o popover
     let botao_cancelar = $(e.target.dataset.cancelar);
-    botao_cancelar[0].addEventListener('click', function(e){
-        $('[data-toggle="popover"]').popover('hide');
-    });
+    
+    if(typeof botao_cancelar[0] !== undefined ) {
+        botao_cancelar[0].addEventListener('click', function(e){
+            $('[data-toggle="popover"]').popover('hide');
+        });
+    }
 });
 
 /*
@@ -37,39 +40,6 @@ if( salvarProntuario !== null ) {
     });
 
 }
-
-/*
-* Botão Remover Prontuario
-*
-* Quando clicar no botão REMOVER, mostrar o popover do bootstrap para confirmar a ação.
-*/
-
-let remove_prontuario = $('#remover_prontuario');
-
-remove_prontuario.popover({
-    placement: 'bottom',
-    html: true
-});
-
-remove_prontuario.on('shown.bs.popover', function() {
-
-    remove_prontuario.css({'border-right':'none' });
-    
-    let cancelar_remover_prontuario = $('#cancelar_remover_prontuario');
-    
-    if( cancelar_remover_prontuario !== undefined ) {
-        
-        cancelar_remover_prontuario[0].addEventListener('click', function(e){
-            remove_prontuario.popover('hide');
-        });
-
-     }
-
-});
-
-remove_prontuario.on('hidden.bs.popover', function() {
-    remove_prontuario.css({'border-right':'1px solid #cccccc' });
-});
 
 
 /*

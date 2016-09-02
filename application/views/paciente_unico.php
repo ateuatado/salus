@@ -28,7 +28,7 @@
                         </div>
                     </div> <!-- col-md-6 -->
                     
-                    <div class="col-md-6" id="coluna-prontuarios">
+                    <div class="col-md-6" id="coluna_prontuarios">
                         <div class="well">
                             <h3>Prontuários</h3>
                             <table class="table table-striped">
@@ -43,7 +43,7 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-default" href="<?php base_url(); ?>/prontuarios/consultar/<?php echo $prontuario->get_id_prontuario(); ?>">Ver</a>
-                                            <button type="button" class="btn btn-default" data-cancelar="#cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>" data-container="#coluna-prontuarios" data-toggle="popover" data-placement="bottom" data-html="true" data-content='
+                                            <button type="button" class="btn btn-default" data-cancelar="#cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>" data-container="#coluna_prontuarios" data-toggle="popover" data-placement="bottom" data-html="true" data-content='
                     
                                                 Você realmente deseja remover esse prontuario? </br></br> 
                                                 <button class="btn btn-default pull-left" id="cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>">Cancelar</button> 

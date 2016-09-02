@@ -20,15 +20,16 @@
                         </li>
                     </ol>
                 </div> <!-- cold-md-9 -->
-                <div class="col-md-3">
+                <div class="col-md-3" id="opcoes_prontuario">
                     <div class="btn-group" role="group" aria-label="...">
                         <a class="btn btn-default" href="<?php echo base_url('prontuarios/editar/' . $prontuario->get_id_prontuario() ); ?>">Editar</a>
-                        
-                        <button class="btn btn-default" id="remover_prontuario" data-content='
-                        
+
+                        <button type="button" class="btn btn-default" data-cancelar="#cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>" data-container="#opcoes_prontuario" data-toggle="popover" data-placement="bottom" data-html="true" data-content='
+                    
                             Você realmente deseja remover esse prontuario? </br></br> 
-                            <button class="btn btn-default" id="cancelar_remover_prontuario" style="margin-right: 5px;">Cancelar</button> 
-                            <a class="btn btn-danger" href="<?php echo base_url('prontuarios/remover/' . $prontuario->get_id_prontuario() . '/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Remover</a>   
+                            <button class="btn btn-default pull-left" id="cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>">Cancelar</button> 
+                            <a class="btn btn-danger pull-right" href="<?php echo base_url('prontuarios/remover/' . $prontuario->get_id_prontuario() . '/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Remover</a>   
+                            </br></br>
 
                         '>Remover</button>
                         
