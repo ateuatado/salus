@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('usuarios');
+		$this->load->model('usuario');
 	}
 
 	public function index()
@@ -18,13 +18,13 @@ class Login extends CI_Controller {
 	{
 		$email =  $this->input->post('email');
 		$senha = md5($this->input->post('senha'));
-		if($this->usuarios->verificaUsuarioPeloEmail($email))
+		if($this->usuario->verificaUsuarioPeloEmail($email))
 		{
-			if($this->usuarios->verificaEmaileSenha($email, $senha))
+			if($this->usuario->verificaEmaileSenha($email, $senha))
 			{
-				$dados = $this->usuarios->dadosUsuarios($email, $senha);
-				$this->usuarios->iniciaSessao($dados[0]);
-				redirect(base_url());
+				$dados = $this->usuario->dadosUsuarios($email, $senha);
+				$this->usuario->iniciaSessao($dados[0]);
+				redirect(base_url('consultas'));
 			}
 			else
 			{

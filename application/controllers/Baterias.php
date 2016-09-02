@@ -61,7 +61,8 @@
             $bateria_obj->setAno($this->input->post('editar_ano'));
 
             $msg['editado'] = $bateria_obj->editar();
-            
+            $msg['bateria'] = $bateria_obj->consultarPorId($bateria_obj->getId_bateria());
+
             $this->load->view('bateriaTelaEditar', $msg);
         }
         

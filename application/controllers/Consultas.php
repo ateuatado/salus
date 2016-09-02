@@ -16,7 +16,12 @@ class Consultas extends CI_Controller {
         $this->load->view('consultaTelaInicial', $query);
     }
 
-    public function cadastrar_page(){
+    public function criar(){
+
+        $this->load->view('consultaTelaCriar');
+    }
+    
+    public function criar_page(){
 
         $criar_obj = new Consulta();
         $query['usuarios_ativos'] = $criar_obj->consultarAtivos();

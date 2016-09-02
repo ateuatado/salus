@@ -1,20 +1,25 @@
 <?php
     $this->load->view('fixos/cabecalho');
     $this->load->helper('form');
-?>
+?>  
+    <section class="prontuario-topo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo base_url('baterias/index'); ?>">Baterias</a></li>
+                    </ol>
+                </div> <!-- cold-md-9 -->
+                <div class="col-md-3">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a class="btn btn-default" href="<?php echo base_url('baterias/criar'); ?>">Criar</a>
+                    </div>
+                </div> <!-- cold-md-3 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section> <!-- prontuario-topo -->
     <div class="section">
         <div class="container">
-            <legend align="center"><h2>Baterias</h2></legend>
-
-                <?php echo anchor(base_url('baterias/criar'), 'Adicionar Bateria', 'class="btn btn-default"');?>
-
-                <br />
-                <br />
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <form name="search" action="<?php echo base_url('my_class/my_method/'); ?>" method="get" id="search-form" >
-                    <input type="text" name="search" >
-                </form>
-                            
                 <table class="table table-condensed">
                     <tr>
                         <th>Id</th>
@@ -44,8 +49,8 @@
                                 <td width="100" align="center">
                                     <?php echo $bateria->getAno();?></td>
                                 <td>
-                                    <?php echo anchor(base_url('baterias/editar').'/'.$bateria->getId_bateria(), 'Editar Bateria', 'class="btn btn-default"');?>
-                                    <?php echo anchor(base_url('baterias/deletar').'/'.$bateria->getId_bateria(), 'Excluir Bateria', 'class="btn btn-danger"');?>
+                                    <?php echo anchor(base_url('baterias/editar').'/'.$bateria->getId_bateria(), 'Editar', 'class="btn btn-default"');?>
+                                    <?php echo anchor(base_url('baterias/deletar').'/'.$bateria->getId_bateria(), 'Remover', 'class="btn btn-danger"');?>
                                 </td>
                             </tr>
                             
@@ -66,9 +71,5 @@
                        }
                     ?>
                 </table>
-
         </div>
-    </div>                
-<?php
-    $this->load->view('fixos/rodape');
-?>
+    </div>

@@ -1,0 +1,49 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.prontuario .prontuario-topo {
+  height: 70px;
+  line-height: 70px;
+  background: #F7F8FB;
+  border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-topo .breadcrumb {
+    padding: 0;
+    margin: 0;
+    background: none;
+    height: 70px; }
+    .prontuario .prontuario-topo .breadcrumb li {
+      height: initial;
+      font-size: 17px; }
+      .prontuario .prontuario-topo .breadcrumb li a {
+        color: #339ACC; }
+      .prontuario .prontuario-topo .breadcrumb li.active {
+        color: #363636; }
+  .prontuario .prontuario-topo .btn-group {
+    float: right;
+    margin-top: 17px; }
+.prontuario .prontuario-info {
+  line-height: 50px;
+  height: 50px;
+  border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-info .prontuario-criado-por p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: #96A3B6; }
+.prontuario .prontuario-conteudo h4 {
+  margin: 0;
+  padding: 0; }
+.prontuario .prontuario-conteudo form {
+  margin: 0; }
+.prontuario .prontuario-conteudo .grupo-pront {
+  padding: 40px 0;
+  color: #363636;
+  border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-conteudo .grupo-pront h4.title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    color: #339ACC; }
+
+/*# sourceMappingURL=base.css.map */

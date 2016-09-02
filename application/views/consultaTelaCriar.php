@@ -2,7 +2,7 @@
   $this->load->view('fixos/cabecalho');
   $this->load->helper('form');
 ?>
-    <form name="cadastro" action="<?php echo base_url('consultas/cadastrarPage'); ?>" method="post">
+    <form name="cadastro" action="<?php echo base_url('consultas/criarPage'); ?>" method="post">
         
         <label>Usuário</label>
         <select name="usuario_selecionado">

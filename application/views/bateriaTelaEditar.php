@@ -2,16 +2,33 @@
     $this->load->view('fixos/cabecalho');
     $this->load->helper('form');
 ?>
+    <section class="prontuario-topo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo base_url('baterias/index'); ?>">Baterias</a></li>
+                        <li class="active">Editar Bateria</li>
+                    </ol>
+                </div> <!-- cold-md-9 -->
+                <div class="col-md-3">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <input type="submit" class="btn btn-default" value="Salvar" href="<?php echo base_url('baterias/editar_page'); ?>"onClick="document.getElementById('editar').submit();">
+                        <a class="btn btn-default" href="<?php echo base_url('baterias/index'); ?>">Voltar</a>
+                    </div>
+                </div> <!-- cold-md-3 -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section> <!-- prontuario-topo -->
     <div class="section">
         <div class="container" >
             <div class="row">
-                <legend align="center"><h2>Editar Bateria</h2></legend>
                     <div class="col-md-7" align="right">
 
                         <?php 
                             if(!empty($bateria)) {
                         
-                                echo form_open('baterias/editar_page'); 
+                                echo form_open('baterias/editar_page', 'id="editar"'); 
                                 
                                 echo form_input(array('type'=>'hidden', 'name'=>'editar_id_bateria'), $bateria->getId_bateria()).'<br>';
 
@@ -30,16 +47,12 @@
                                 echo form_label('Ano: ');
                                 echo form_input(array('name'=>'editar_ano'), $bateria->getAno()).'<br>';
                         
-                                echo form_submit('submit', 'Editar Bateria', 'class="btn btn-default"');
-                                echo anchor(base_url('baterias/index'), 'Cancelar', 'class="btn btn-default"');
-
                                 echo form_close();
                             }
                     
                             if(isset($editado)) {
                                 if($editado == 1) {
                                         echo "<script type='text/javascript'>alert('Bateria atualizada com sucesso!');</script>";
-                                        echo anchor(base_url('baterias/index'), 'Voltar', 'class="btn btn-default"');
                                 }
                                 if($editado == 0)
                                     echo "<script type='text/javascript'>alert('Erro na atualização da bateria. Contate o administrador do sistema.');</script>";
@@ -49,6 +62,3 @@
             </div>
         </div>
     </div>
-<?php
-    $this->load->view('fixos/rodape');
-?>
