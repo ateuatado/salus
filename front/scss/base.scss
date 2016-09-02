@@ -6,6 +6,10 @@ body{
     -moz-osx-font-smoothing: grayscale;
 }
 
+*:focus {
+    outline: none;
+}
+
 .prontuario{
     .prontuario-topo{
 
@@ -13,6 +17,13 @@ body{
         line-height: 70px;
         background: #F7F8FB;
         border-bottom: 1px solid #e7ebf3;
+
+        #remover_prontuario{
+
+            &:focus{
+                outline: none;
+            }
+        }
 
         .breadcrumb{
             padding: 0;
@@ -70,13 +81,40 @@ body{
             padding: 40px 0;
             color: $text-color;
             border-bottom: 1px solid #e7ebf3;
+
+            textarea{
+                resize: vertical;
+                -moz-resize: vertical;
+            }
             
             h4.title{
                 margin: 0;
                 font-size: 17px;
                 font-weight: 400;
                 color: $primary-color;
+                margin-bottom: 20px;
                 
+            }
+
+            .form-group{
+                .panel-body{
+                    padding: 14px 15px 15px;
+                }
+            }
+
+            .pront_radio_input{
+                margin-right: 10px;
+                padding: initial;
+                
+                & + .pront_radio_input {
+                    margin-left: 0;
+                }
+
+                input{
+                    position: initial;
+                    margin: 0;
+                    margin-right: 3px;
+                }
             }
         }
 

@@ -622,6 +622,11 @@ class Prontuario extends CI_Model{
 
     }
 
+    public function remover( $id_prontuario )
+    {
+        return $this->db->delete( 'prontuario', array('id_prontuario' => $id_prontuario ));
+    }
+
     public function pegarOpcoesParaProntuario($campo = null) 
     {
 

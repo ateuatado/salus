@@ -2,11 +2,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+*:focus {
+  outline: none; }
+
 .prontuario .prontuario-topo {
   height: 70px;
   line-height: 70px;
   background: #F7F8FB;
   border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-topo #remover_prontuario:focus {
+    outline: none; }
   .prontuario .prontuario-topo .breadcrumb {
     padding: 0;
     margin: 0;
@@ -40,10 +45,25 @@ body {
   padding: 40px 0;
   color: #363636;
   border-bottom: 1px solid #e7ebf3; }
+  .prontuario .prontuario-conteudo .grupo-pront textarea {
+    resize: vertical;
+    -moz-resize: vertical; }
   .prontuario .prontuario-conteudo .grupo-pront h4.title {
     margin: 0;
     font-size: 17px;
     font-weight: 400;
-    color: #339ACC; }
+    color: #339ACC;
+    margin-bottom: 20px; }
+  .prontuario .prontuario-conteudo .grupo-pront .form-group .panel-body {
+    padding: 14px 15px 15px; }
+  .prontuario .prontuario-conteudo .grupo-pront .pront_radio_input {
+    margin-right: 10px;
+    padding: initial; }
+    .prontuario .prontuario-conteudo .grupo-pront .pront_radio_input + .pront_radio_input {
+      margin-left: 0; }
+    .prontuario .prontuario-conteudo .grupo-pront .pront_radio_input input {
+      position: initial;
+      margin: 0;
+      margin-right: 3px; }
 
 /*# sourceMappingURL=base.css.map */
