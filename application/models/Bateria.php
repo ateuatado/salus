@@ -16,9 +16,7 @@
                           'semestre' => $this->semestre,
                           'ano' => $this->ano
             );
-
-            $this->db->insert('bateria', $data);
-            return $this->db->affected_rows();
+            return $this->db->insert('bateria', $data);
         }
 
         public function consultar() {
@@ -40,9 +38,7 @@
                           'semestre' => $this->semestre,
                           'ano' => $this->ano
             );
-
-            $this->db->update('bateria', $data, array('id_bateria' => $this->id_bateria));
-            return $this->db->affected_rows();
+            return $this->db->update('bateria', $data, array('id_bateria' => $this->id_bateria));
         }
 
         public function deletar() {

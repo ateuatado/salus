@@ -31,19 +31,37 @@
             $bateria_obj->setSemestre($this->input->post('criar_semestre'));
             $bateria_obj->setAno($this->input->post('criar_ano'));
             
-            $msg['cadastrado'] = $bateria_obj->criar();
-            
-            $this->load->view('bateriaTelaCriar', $msg);
+            $msg['resultado'] = $bateria_obj->criar();
+            $msg['bateria'] = $bateria_obj->consultarPorId($this->db->insert_id());
+
+            if($msg['resultado'] == true) {
+                $msg['resultado'] = "sucesso";
+                $msg['mensagem'] = "Bateria criada com sucesso.";
+                $this->load->view('bateriaTelaVisualizar', $msg);
+            } 
+            else {
+                $msg['resultado'] = "erro";
+                $msg['mensagem'] = "Não foi possível criar a bateria.";
+                $this->load->view('bateriaTelaVisualizar', $msg);
+            }
         }
 
-        public function consultar(){
+        public function consultar($id_bateria = null){
             
-            $bateria_obj = new Bateria();
-            return $baterias = $bateria_obj->consultar();          
+            if(!empty($id_bateria)){
+                $bateria_obj = new Bateria();
+            
+                $data['bateria'] = $bateria_obj->consultarPorId($id_bateria);
+                $this->load->view('bateriaTelaVisualizar', $data);
+            }
+            else {
+                $bateria_obj = new Bateria();
+                return $baterias = $bateria_obj->consultar(); 
+            }         
         }
 
         public function editar($id_bateria) {
-            
+
             $bateria_obj = new Bateria();
             
             $data['bateria'] = $bateria_obj->consultarPorId($id_bateria);
@@ -59,11 +77,20 @@
             $bateria_obj->setData_fim($this->input->post('editar_data_fim'));
             $bateria_obj->setSemestre($this->input->post('editar_semestre'));
             $bateria_obj->setAno($this->input->post('editar_ano'));
-
-            $msg['editado'] = $bateria_obj->editar();
+            
+            $msg['resultado'] = $bateria_obj->editar();
             $msg['bateria'] = $bateria_obj->consultarPorId($bateria_obj->getId_bateria());
 
-            $this->load->view('bateriaTelaEditar', $msg);
+            if($msg['resultado'] == true) {
+                $msg['resultado'] = "sucesso";
+                $msg['mensagem'] = "Bateria atualizada com sucesso.";
+                $this->load->view('bateriaTelaVisualizar', $msg);
+            } 
+            else {
+                $msg['resultado'] = "erro";
+                $msg['mensagem'] = "Não foi possível atualizar a bateria.";
+                $this->load->view('bateriaTelaVisualizar', $msg);
+            }
         }
         
         public function deletar($id_bateria){

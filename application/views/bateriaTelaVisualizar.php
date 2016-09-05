@@ -8,12 +8,12 @@
                 <div class="col-md-9">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo base_url('baterias/index'); ?>">Baterias</a></li>
-                        <li class="active">Editar <?php echo $bateria->getNome_bateria(); ?></li>
+                        <li class="active"><?php echo $bateria->getNome_bateria() ?></li>
                     </ol>
                 </div> <!-- cold-md-9 -->
                 <div class="col-md-3" id="bateria">
                     <div class="btn-group" role="group" aria-label="...">
-                        <input type="submit" class="btn btn-default" value="Salvar" href="<?php echo base_url('baterias/editar_page'); ?>"onClick="document.getElementById('editar_page').submit();">
+                        <?php echo anchor(base_url('baterias/editar').'/'.$bateria->getId_bateria(), 'Editar', 'class="btn btn-default"');?>
                         <button type="button" 
                                 class="btn btn-default" 
                                 data-cancelar="#cancelar_bateria_<?php echo $bateria->getId_bateria(); ?>" 
@@ -39,36 +39,42 @@
     </section> <!-- prontuario-topo -->
     <div class="section">
         <div class="container" >
+            <?php if( isset($resultado) && $resultado == 'sucesso' ): ?>
+                <div class="alert alert-success alert-dismissible" role="alert" style="color: #3c763d; margin-top: 30px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Sucesso!</strong> <?php echo $mensagem; ?>
+                </div>
+            <?php elseif( isset($resultado) && $resultado == 'erro' ): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert" style="color: #a94442; margin-top: 30px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Erro!</strong> <?php echo $mensagem; ?>
+                </div>
+            <?php endif; ?>
+
             <div class="row">
                 <div class="col-sm-4"></div>
                     <div class="col-sm-4">
-                    
-                    <?php
-                        if(!empty($bateria)) {
-                        
-                        echo form_open('baterias/editar_page', 'id="editar_page"'); ?>
-                        
-                        <input type="hidden" name="editar_id_bateria" class="form-control" value="<?php echo $bateria->getId_bateria(); ?>">
+
+                    <?php if(!empty($bateria)): ?>
 
                         <label>Nome da Bateria:</label>
-                            <input type="text" name="editar_nome_bateria" class="form-control" value="<?php echo $bateria->getNome_bateria(); ?>">
+                            <input type="text" name="show_nome_bateria" class="form-control" value="<?php echo $bateria->getNome_bateria(); ?>" readonly>
 
                         <label>Data Início:</label>
-                            <input type="text" name="editar_data_inicio" class="form-control" value="<?php echo $bateria->getData_inicio(); ?>">
+                            <input type="text" name="show_data_inicio" class="form-control" value="<?php echo $bateria->getData_inicio(); ?>" readonly>
 
                         <label>Data Fim:</label>
-                            <input type="text" name="editar_data_fim" class="form-control" value="<?php echo $bateria->getData_fim(); ?>">
+                            <input type="text" name="show_data_fim" class="form-control" value="<?php echo $bateria->getData_fim(); ?>" readonly>
 
                         <label>Semestre:</label>
-                            <input type="text" name="editar_semestre" class="form-control" value="<?php echo $bateria->getSemestre(); ?>">
+                            <input type="text" name="show_semestre" class="form-control" value="<?php echo $bateria->getSemestre(); ?>" readonly>
 
                         <label>Ano:</label>
-                            <input type="text" name="editar_ano" class="form-control" value="<?php echo $bateria->getAno(); ?>">
-                                
-                        <?php
-                                echo form_close();
-                            }
-                        ?>
+                            <input type="text" name="show_ano" class="form-control" value="<?php echo $bateria->getAno(); ?>" readonly>
+                        
+                    <?php endif; ?>
+
+                    </div>                
                 </div>
             </div>
         </div>

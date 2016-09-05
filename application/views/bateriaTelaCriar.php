@@ -23,27 +23,25 @@
     <div class="section">
         <div class="container" >
             <div class="row">
-                    <div class="col-md-7" align="right">
-                        <?php
-                            echo form_open('baterias/criar_page', 'id="criar"'); 
-                            
-                            echo form_label('Nome Bateria: ');
-                            echo form_input(array('name'=>'criar_nome_bateria')).'<br>';
-                            
-                            echo form_label('Data Início: ');
-                            echo form_input(array('name'=>'criar_data_inicio')).'<br>';
-                            
-                            echo form_label('Data Fim: ');
-                            echo form_input(array('name'=>'criar_data_fim')).'<br>';
-                            
-                            echo form_label('Semestre: ');
-                            echo form_input(array('name'=>'criar_semestre')).'<br>';
-                            
-                            echo form_label('Ano: ');
-                            echo form_input(array('name'=>'criar_ano')).'<br>';       
-                            
-                            echo form_close();
-                            
+                <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <?php echo form_open('baterias/criar_page', 'id="criar"'); ?>
+
+                                <label>Nome da Bateria:</label>
+                                    <input type="text" name="criar_nome_bateria" class="form-control">
+                                <label>Data Início:</label>
+                                    <input type="text" name="criar_data_inicio" class="form-control">
+                                <label>Data Fim:</label>
+                                    <input type="text" name="criar_data_fim" class="form-control">
+                                <label>Semestre:</label>
+                                    <input type="text" name="criar_semestre" class="form-control">
+                                <label>Ano:</label>
+                                    <input type="text" name="criar_ano" class="form-control">
+
+                            <?php echo form_close(); ?> 
+                        </div>
+
+                        <?php //remover 
                             if(isset($cadastrado)) {
                                 if($cadastrado == 1)
                                     echo "<script type='text/javascript'>alert('Bateria cadastrada com sucesso!');</script>";
@@ -51,7 +49,10 @@
                                     echo "<script type='text/javascript'>alert('Erro no cadastro da Bateria!');</script>";
                             }
                         ?>
+                        
+                        
                 </div>
             </div>
         </div>
     </div>
+<?php $this->load->view('fixos/rodape'); ?>

@@ -12,7 +12,7 @@
                 </div> <!-- cold-md-9 -->
                 <div class="col-md-3">
                     <div class="btn-group" role="group" aria-label="...">
-                        <a class="btn btn-default" href="<?php echo base_url('baterias/criar'); ?>">Criar</a>
+                        <a class="btn btn-default" href="<?php echo base_url('baterias/criar'); ?>">Nova Bateria</a>
                     </div>
                 </div> <!-- cold-md-3 -->
             </div> <!-- row -->
@@ -20,7 +20,7 @@
     </section> <!-- prontuario-topo -->
     <div class="section">
         <div class="container">
-                <table class="table table-condensed">
+                <table class="table table-condensed" id="tabela_baterias">
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
@@ -49,11 +49,28 @@
                                 <td width="100" align="center">
                                     <?php echo $bateria->getAno();?></td>
                                 <td>
-                                    <?php echo anchor(base_url('baterias/editar').'/'.$bateria->getId_bateria(), 'Editar', 'class="btn btn-default"');?>
-                                    <?php echo anchor(base_url('baterias/deletar').'/'.$bateria->getId_bateria(), 'Remover', 'class="btn btn-danger"');?>
+                                    <?php echo anchor(base_url('baterias/consultar').'/'.$bateria->getId_bateria(), 'Ver', 'class="btn btn-default"');?>
+                                    <button type="button" 
+                                            class="btn btn-default" 
+                                            data-cancelar="#cancelar_bateria_<?php echo $bateria->getId_bateria(); ?>" 
+                                            data-container="#tabela_baterias" 
+                                            data-toggle="popover" 
+                                            data-placement="bottom" 
+                                            data-html="true" 
+                                            data-content='
+
+                                            Você realmente deseja remover essa bateria? </br></br> 
+                                            
+                                            <button class="btn btn-default pull-left" 
+                                            id="cancelar_bateria_<?php echo $bateria->getId_bateria(); ?>">Cancelar</button> 
+                                            
+                                            <a class="btn btn-danger pull-right" 
+                                            href="<?php echo base_url('baterias/deletar/' . $bateria->getId_bateria() ); ?>">Remover</a>   
+                                            </br></br>'>Remover
+                                    </button>
                                 </td>
                             </tr>
-                            
+
                         <?php endforeach ?>
                     <?php else: ?>
 
@@ -73,3 +90,4 @@
                 </table>
         </div>
     </div>
+<?php $this->load->view('fixos/rodape'); ?>
