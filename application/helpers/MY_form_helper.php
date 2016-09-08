@@ -9,16 +9,11 @@ if ( ! function_exists('pront_radio_input'))
 
         foreach($fields as $field) {
 
-            // Array ( 
-            //         [0] => Array ( [id_opcoes] => 1 [campo] => adm_visao [opcao] => presente [obs] => ) 
-            //         [1] => Array ( [id_opcoes] => 2 [campo] => adm_visao [opcao] => ausente [obs] => ) 
-            //         [2] => Array ( [id_opcoes] => 3 [campo] => adm_visao [opcao] => parcial - acompanha objeto mas não fixa [obs] => ) 
-            // )  
-
             $selected_input = ( $selected == $field['id_opcoes'] ) ? 'checked=""' : '';
+            $obs_ativo = ( $field['obs'] == 's' ) ? 'data-obs="' . $field['campo'] . '_obs"' : '';
             
             $html .= '<label class="radio-inline pront_radio_input">';
-            $html .= '<input type="radio" name="'.$field['campo'].'" value="'.$field['id_opcoes'].'"'. $selected_input .'> ' . $field['opcao'];
+            $html .= '<input type="radio" name="' . $field['campo'] . '" value="' . $field['id_opcoes'] . '"' . $selected_input . ' ' . $obs_ativo . '> ' . $field['opcao'];
             $html .= '</label>';
 
         }

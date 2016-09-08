@@ -2,26 +2,26 @@
 
 <div class="prontuario estilo-padrao">
 
-    <section class="padrao-topo navbar-fixed-top">
+    <section class="padrao-topo">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <ol class="breadcrumb">
                         <li><a href="<?php echo base_url('pacientes/consultar'); ?>">Pacientes</a></li>
                         <li>
-                            <a href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() . '#prontuarios' ); ?>" class="text-capitalize">
-                                <?php echo $prontuario->get_paciente()->get_nome_completo(); ?>
+                            <a href="<?php echo base_url('pacientes/consultar/' . $paciente->get_id_paciente() . '#prontuarios' ); ?>" class="text-capitalize">
+                                <?php echo $paciente->get_nome_completo(); ?>
                             </a>
                         </li>
                         <li class="active">
-                            Editar Prontuario
+                            Cadastrar Prontuário
                         </li>
                     </ol>
                 </div> <!-- cold-md-9 -->
                 <div class="col-md-3">
                     <div class="btn-group" role="group" aria-label="...">
                         <button class="btn btn-style06" id="salvarProntuario">Salvar</button>
-                        <a class="btn btn-style06" href="<?php echo base_url('prontuarios/consultar/' . $prontuario->get_id_prontuario() ); ?>">Voltar</a>
+                        <a class="btn btn-style06" href="<?php echo base_url('pacientes/consultar/' . $paciente->get_id_paciente() . '#prontuarios' ); ?>">Voltar</a>
                     </div>
                 </div> <!-- cold-md-3 -->
             </div> <!-- row -->
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="prontuario-criado-por">
-                        <p>Criado por: <?php echo $prontuario->get_usuario()->get_nome_usuario(); ?></p>
+                        <p>?</p>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,41 @@
 
             <?php echo form_open('prontuarios/editar_form', 
                     array( 'id' => 'prontuarios_form', 'name' => 'prontuarios_form' ), 
-                    array( 'id_prontuario' => $prontuario->get_id_prontuario() ) ); ?>
+                    array( 'id_paciente' => $paciente->get_id_paciente() ) ); ?>
+                
+                <section class="grupo-pront usuarios">
+                
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <h4 class="title">Usuários</h4>
+                        </div> <!-- col-md-4 -->
+
+                        <div class="col-md-8">
+
+                            <div class="form-group">
+                                <label>Opções</label>
+
+                                <div class="form-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <select class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- form-group -->
+
+                        </div> <!-- col-md-8 -->
+
+                    </div> <!-- row -->
+                    
+                </section> <!-- usuarios -->
 
                 <section class="grupo-pront adm">
 
@@ -76,7 +110,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $adm_visao = $prontuario->pegarOpcoesParaProntuario( 'adm_visao' );
-                                                    echo pront_radio_input( $adm_visao, $prontuario->get_adm_visao() ); ?>
+                                                    echo pront_radio_input( $adm_visao ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +123,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $adm_audicao = $prontuario->pegarOpcoesParaProntuario('adm_audicao');
-                                                    echo pront_radio_input($adm_audicao, $prontuario->get_adm_audicao()); ?>
+                                                    echo pront_radio_input( $adm_audicao) ; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +136,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $adm_linguagem = $prontuario->pegarOpcoesParaProntuario('adm_linguagem');
-                                                    echo pront_radio_input($adm_linguagem, $prontuario->get_adm_linguagem()); ?>
+                                                    echo pront_radio_input( $adm_linguagem ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -115,13 +149,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php  $adm_cognitivo = $prontuario->pegarOpcoesParaProntuario('adm_cognitivo');
-                                                    echo pront_radio_input($adm_cognitivo, $prontuario->get_adm_cognitivo()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="adm_cognitivo_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="adm_cognitivo_obs" value="<?php echo $prontuario->get_adm_cognitivo_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $adm_cognitivo ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -131,16 +159,10 @@
                                 <label>Reflexos Primitivos</label>
 
                                 <div class="form-group">
-                                    <div class="panel panel-default">
+                                <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $adm_reflexos_prim = $prontuario->pegarOpcoesParaProntuario('adm_reflexos_prim');
-                                                    echo pront_radio_input($adm_reflexos_prim, $prontuario->get_adm_reflexos_prim()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="adm_reflexos_prim_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="adm_reflexos_prim_obs" value="<?php echo $prontuario->get_adm_reflexos_prim_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $adm_reflexos_prim ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +191,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $supino_simetria = $prontuario->pegarOpcoesParaProntuario('supino_simetria');
-                                                    echo pront_radio_input($supino_simetria, $prontuario->get_supino_simetria()); ?>
+                                                    echo pront_radio_input( $supino_simetria ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +204,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $supino_alinhamento = $prontuario->pegarOpcoesParaProntuario('supino_alinhamento');
-                                                    echo pront_radio_input($supino_alinhamento, $prontuario->get_supino_alinhamento()); ?>
+                                                    echo pront_radio_input( $supino_alinhamento ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +217,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $supino_movimentacao_ativa = $prontuario->pegarOpcoesParaProntuario('supino_movimentacao_ativa');
-                                                    echo pront_radio_input($supino_movimentacao_ativa, $prontuario->get_supino_movimentacao_ativa()); ?>
+                                                    echo pront_radio_input( $supino_movimentacao_ativa ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +230,6 @@
                                     <?php   $supino_obs = array(
                                                 'name' => 'supino_obs',
                                                 'id' => 'supino_obs',
-                                                'value' => $prontuario->get_supino_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -239,7 +260,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $prono_controle_cervical = $prontuario->pegarOpcoesParaProntuario('prono_controle_cervical');
-                                                    echo pront_radio_input($prono_controle_cervical, $prontuario->get_prono_controle_cervical()); ?>
+                                                    echo pront_radio_input( $prono_controle_cervical ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +273,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $prono_controle_escapular = $prontuario->pegarOpcoesParaProntuario('prono_controle_escapular');
-                                                    echo pront_radio_input($prono_controle_escapular, $prontuario->get_prono_controle_escapular()); ?>
+                                                    echo pront_radio_input( $prono_controle_escapular ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +286,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $prono_simetria = $prontuario->pegarOpcoesParaProntuario('prono_simetria');
-                                                    echo pront_radio_input($prono_simetria, $prontuario->get_prono_simetria()); ?>
+                                                    echo pront_radio_input( $prono_simetria ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +298,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $prono_alinhamento = $prontuario->pegarOpcoesParaProntuario('prono_alinhamento');
-                                                    echo pront_radio_input($prono_alinhamento, $prontuario->get_prono_alinhamento()); ?>
+                                                    echo pront_radio_input( $prono_alinhamento ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -290,7 +311,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $prono_movimentacao_ativa = $prontuario->pegarOpcoesParaProntuario('prono_movimentacao_ativa');
-                                                    echo pront_radio_input($prono_movimentacao_ativa, $prontuario->get_prono_movimentacao_ativa()); ?>
+                                                    echo pront_radio_input( $prono_movimentacao_ativa ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -303,7 +324,6 @@
                                     <?php   $prono_obs = array(
                                                 'name' => 'prono_obs',
                                                 'id' => 'prono_obs',
-                                                'value' => $prontuario->get_prono_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -335,13 +355,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $rolar = $prontuario->pegarOpcoesParaProntuario('rolar');
-                                                    echo pront_radio_input($rolar, $prontuario->get_rolar()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="rolar_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="rolar_obs" value="<?php echo $prontuario->get_rolar_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $rolar ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -370,7 +384,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_controle_cervical = $prontuario->pegarOpcoesParaProntuario('sentado_controle_cervical');
-                                                    echo pront_radio_input($sentado_controle_cervical, $prontuario->get_sentado_controle_cervical()); ?>
+                                                    echo pront_radio_input( $sentado_controle_cervical ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +397,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_controle_tronco = $prontuario->pegarOpcoesParaProntuario('sentado_controle_tronco');
-                                                    echo pront_radio_input($sentado_controle_tronco, $prontuario->get_sentado_controle_tronco()); ?>
+                                                    echo pront_radio_input( $sentado_controle_tronco ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -396,7 +410,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentando_simetria = $prontuario->pegarOpcoesParaProntuario('sentando_simetria');
-                                                    echo pront_radio_input($sentando_simetria, $prontuario->get_sentando_simetria()); ?>
+                                                    echo pront_radio_input( $sentando_simetria ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -409,7 +423,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_alinhamento = $prontuario->pegarOpcoesParaProntuario('sentado_alinhamento');
-                                                    echo pront_radio_input($sentado_alinhamento, $prontuario->get_sentado_alinhamento()); ?>
+                                                    echo pront_radio_input( $sentado_alinhamento ); ?>
                                             </div>
                                     </div>
                                 </div>
@@ -422,7 +436,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_movimentacao_ativa = $prontuario->pegarOpcoesParaProntuario('sentado_movimentacao_ativa');
-                                                    echo pront_radio_input($sentado_movimentacao_ativa, $prontuario->get_sentado_movimentacao_ativa()); ?>
+                                                    echo pront_radio_input( $sentado_movimentacao_ativa ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -435,7 +449,6 @@
                                     <?php   $sentado_obs = array(
                                                 'name' => 'sentado_obs',
                                                 'id' => 'sentado_obs',
-                                                'value' => $prontuario->get_sentado_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -467,7 +480,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_postura_quadril = $prontuario->pegarOpcoesParaProntuario('sentado_postura_quadril');
-                                                    echo pront_radio_input($sentado_postura_quadril, $prontuario->get_sentado_postura_quadril()); ?>
+                                                    echo pront_radio_input( $sentado_postura_quadril ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -480,7 +493,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_deformidade_coluna = $prontuario->pegarOpcoesParaProntuario('sentado_deformidade_coluna');
-                                                    echo pront_radio_input($sentado_deformidade_coluna, $prontuario->get_sentado_deformidade_coluna()); ?>
+                                                    echo pront_radio_input( $sentado_deformidade_coluna ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -493,7 +506,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $sentado_deformidade_quadril = $prontuario->pegarOpcoesParaProntuario('sentado_deformidade_quadril');
-                                                    echo pront_radio_input($sentado_deformidade_quadril, $prontuario->get_sentado_deformidade_quadril()); ?>
+                                                    echo pront_radio_input( $sentado_deformidade_quadril ); ?>
                                             </div>
                                     </div>
                                 </div>
@@ -506,7 +519,6 @@
                                     <?php   $sentado_troca_postural = array(
                                                 'name' => 'sentado_troca_postural',
                                                 'id' => 'sentado_troca_postural',
-                                                'value' => $prontuario->get_sentado_troca_postural(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -538,7 +550,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $engatinhar = $prontuario->pegarOpcoesParaProntuario('engatinhar');
-                                                    echo pront_radio_input($engatinhar, $prontuario->get_engatinhar()); ?>
+                                                    echo pront_radio_input( $engatinhar ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -551,7 +563,6 @@
                                     <?php   $engatinhar_obs = array(
                                                 'name' => 'engatinhar_obs',
                                                 'id' => 'engatinhar_obs',
-                                                'value' => $prontuario->get_engatinhar_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -583,7 +594,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $arrastar = $prontuario->pegarOpcoesParaProntuario('arrastar');
-                                                    echo pront_radio_input($arrastar, $prontuario->get_arrastar()); ?>
+                                                    echo pront_radio_input( $arrastar ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -596,7 +607,6 @@
                                     <?php   $arrastar_obs = array(
                                                 'name' => 'arrastar_obs',
                                                 'id' => 'arrastar_obs',
-                                                'value' => $prontuario->get_arrastar_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -627,13 +637,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $ortostatismo = $prontuario->pegarOpcoesParaProntuario('ortostatismo');
-                                                    echo pront_radio_input($ortostatismo, $prontuario->get_ortostatismo()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="ortostatismo_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="ortostatismo_obs" value="<?php echo $prontuario->get_ortostatismo_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $ortostatismo ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -662,7 +666,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $marcha = $prontuario->pegarOpcoesParaProntuario('marcha');
-                                                    echo pront_radio_input($marcha, $prontuario->get_marcha()); ?>
+                                                    echo pront_radio_input( $marcha ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -675,7 +679,6 @@
                                     <?php   $marcha_obs = array(
                                                 'name' => 'marcha_obs',
                                                 'id' => 'marcha_obs',
-                                                'value' => $prontuario->get_marcha_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -707,7 +710,6 @@
                                     <?php   $observacao = array(
                                                 'name' => 'observacao',
                                                 'id' => 'observacao',
-                                                'value' => $prontuario->get_observacao(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -739,13 +741,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $tonus_base_hipertonia_elastica = $prontuario->pegarOpcoesParaProntuario('tonus_base_hipertonia_elastica');
-                                                    echo pront_radio_input($tonus_base_hipertonia_elastica, $prontuario->get_tonus_base_hipertonia_elastica()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="tonus_base_hipertonia_elastica_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="tonus_base_hipertonia_elastica_obs" value="<?php echo $prontuario->get_tonus_base_hipertonia_elastica_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $tonus_base_hipertonia_elastica ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -758,7 +754,6 @@
                                     <?php   $tonus_base_hipertonia_elastica_sinais_clinicos = array(
                                                 'name' => 'tonus_base_hipertonia_elastica_sinais_clinicos',
                                                 'id' => 'tonus_base_hipertonia_elastica_sinais_clinicos',
-                                                'value' => $prontuario->get_tonus_base_hipertonia_elastica_sinais_clinicos(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -774,7 +769,6 @@
                                     <?php   $tonus_base_asworth = array(
                                                 'name' => 'tonus_base_asworth',
                                                 'id' => 'tonus_base_asworth',
-                                                'value' => $prontuario->get_tonus_base_asworth(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -790,13 +784,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $tonus_base_hipertonia_plastica = $prontuario->pegarOpcoesParaProntuario('tonus_base_hipertonia_plastica');
-                                                    echo pront_radio_input($tonus_base_hipertonia_plastica, $prontuario->get_tonus_base_hipertonia_plastica()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="tonus_base_hipertonia_plastica_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="tonus_base_hipertonia_plastica_obs" value="<?php echo $prontuario->get_tonus_base_hipertonia_plastica_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $tonus_base_hipertonia_plastica ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -809,7 +797,6 @@
                                     <?php   $tonus_base_hipertonia_plastica_sinais_clinicos = array(
                                                 'name' => 'tonus_base_hipertonia_plastica_sinais_clinicos',
                                                 'id' => 'tonus_bastonus_base_hipertonia_plastica_sinais_clinicose_asworth',
-                                                'value' => $prontuario->get_tonus_base_hipertonia_plastica_sinais_clinicos(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -825,13 +812,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $tonus_base_discinesias = $prontuario->pegarOpcoesParaProntuario('tonus_base_discinesias');
-                                                    echo pront_radio_input($tonus_base_discinesias, $prontuario->get_tonus_base_discinesias()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="tonus_base_discinesias_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="tonus_base_discinesias_obs" value="<?php echo $prontuario->get_tonus_base_discinesias_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $tonus_base_discinesias ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -844,13 +825,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $tonus_base_hipotonia = $prontuario->pegarOpcoesParaProntuario('tonus_base_hipotonia');
-                                                    echo pront_radio_input($tonus_base_hipotonia, $prontuario->get_tonus_base_hipotonia()); ?>
-                                        </div>
-                                        <div class="panel-footer" id="tonus_base_hipotonia_obs">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">Descrição</div>
-                                                <input type="text" class="form-control" name="tonus_base_hipotonia_obs" value="<?php echo $prontuario->get_tonus_base_hipotonia_obs(); ?>">
-                                            </div>
+                                                    echo pront_radio_input( $tonus_base_hipotonia ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -863,7 +838,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $tonus_base_incordenacao_movimentos = $prontuario->pegarOpcoesParaProntuario('tonus_base_incordenacao_movimentos');
-                                                    echo pront_radio_input($tonus_base_incordenacao_movimentos, $prontuario->get_tonus_base_incordenacao_movimentos()); ?>
+                                                    echo pront_radio_input( $tonus_base_incordenacao_movimentos ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -892,7 +867,6 @@
                                     <?php   $tonus_dinamico = array(
                                                 'name' => 'tonus_dinamico',
                                                 'id' => 'tonus_dinamico',
-                                                'value' => $prontuario->get_tonus_dinamico(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -924,7 +898,6 @@
                                     <?php   $encurtamento_musculares_deformidades = array(
                                                 'name' => 'encurtamento_musculares_deformidades',
                                                 'id' => 'encurtamento_musculares_deformidades',
-                                                'value' => $prontuario->get_encurtamento_musculares_deformidades(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -963,7 +936,6 @@
                                         <?php   $forca_muscular_mms_gm = array(
                                                     'name' => 'forca_muscular_mms_gm',
                                                     'id' => 'forca_muscular_mms_gm',
-                                                    'value' => $prontuario->get_forca_muscular_mms_gm(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -973,7 +945,6 @@
                                         <?php   $forca_muscular_mms_d = array(
                                                     'name' => 'forca_muscular_mms_d',
                                                     'id' => 'forca_muscular_mms_d',
-                                                    'value' => $prontuario->get_forca_muscular_mms_d(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -983,7 +954,6 @@
                                         <?php   $forca_muscular_mms_e = array(
                                                     'name' => 'forca_muscular_mms_e',
                                                     'id' => 'forca_muscular_mms_e',
-                                                    'value' => $prontuario->get_forca_muscular_mms_e(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -996,7 +966,6 @@
                                         <?php   $forca_muscular_mmii_gm = array(
                                                     'name' => 'forca_muscular_mmii_gm',
                                                     'id' => 'forca_muscular_mmii_gm',
-                                                    'value' => $prontuario->get_forca_muscular_mmii_gm(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1006,7 +975,6 @@
                                         <?php   $forca_muscular_mmii_d = array(
                                                     'name' => 'forca_muscular_mmii_d',
                                                     'id' => 'forca_muscular_mmii_d',
-                                                    'value' => $prontuario->get_forca_muscular_mmii_d(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1016,7 +984,6 @@
                                         <?php   $forca_muscular_mmii_e = array(
                                                     'name' => 'forca_muscular_mmii_e',
                                                     'id' => 'forca_muscular_mmii_e',
-                                                    'value' => $prontuario->get_forca_muscular_mmii_e(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1055,7 +1022,6 @@
                                         <?php   $mrp_reacoes_endireitamento_postura_sentada = array(
                                                     'name' => 'mrp_reacoes_endireitamento_postura_sentada',
                                                     'id' => 'mrp_reacoes_endireitamento_postura_sentada',
-                                                    'value' => $prontuario->get_mrp_reacoes_endireitamento_postura_sentada(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1065,7 +1031,6 @@
                                         <?php   $mrp_reacoes_endireitamento_bipede = array(
                                                     'name' => 'mrp_reacoes_endireitamento_bipede',
                                                     'id' => 'mrp_reacoes_endireitamento_bipede',
-                                                    'value' => $prontuario->get_mrp_reacoes_endireitamento_bipede(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1078,7 +1043,6 @@
                                         <?php   $mrp_reacoes_equilibrio_postura_sentada = array(
                                                     'name' => 'mrp_reacoes_equilibrio_postura_sentada',
                                                     'id' => 'mrp_reacoes_equilibrio_postura_sentada',
-                                                    'value' => $prontuario->get_mrp_reacoes_equilibrio_postura_sentada(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1088,7 +1052,6 @@
                                         <?php $mrp_reacoes_equilibrio_bipede = array(
                                                 'name' => 'mrp_reacoes_equilibrio_bipede',
                                                 'id' => 'mrp_reacoes_equilibrio_bipede',
-                                                'value' => $prontuario->get_mrp_reacoes_equilibrio_bipede(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1101,7 +1064,6 @@
                                         <?php   $mrp_reacoes_protecao_postura_sentada = array(
                                                     'name' => 'mrp_reacoes_protecao_postura_sentada',
                                                     'id' => 'mrp_reacoes_protecao_postura_sentada',
-                                                    'value' => $prontuario->get_mrp_reacoes_protecao_postura_sentada(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1111,7 +1073,6 @@
                                         <?php   $mrp_reacoes_protecao_bipede = array(
                                                     'name' => 'mrp_reacoes_protecao_bipede',
                                                     'id' => 'mrp_reacoes_protecao_bipede',
-                                                    'value' => $prontuario->get_mrp_reacoes_protecao_bipede(),
                                                     'rows' => 3,
                                                     'class' => 'form-control'
                                                 );
@@ -1143,7 +1104,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $atividades_vida_diaria_alimentacao = $prontuario->pegarOpcoesParaProntuario('atividades_vida_diaria_alimentacao');
-                                                    echo pront_radio_input($atividades_vida_diaria_alimentacao, $prontuario->get_atividades_vida_diaria_alimentacao()); ?>
+                                                    echo pront_radio_input( $atividades_vida_diaria_alimentacao ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1156,7 +1117,6 @@
                                     <?php   $atividades_vida_diaria_alimentacao_obs = array(
                                                 'name' => 'atividades_vida_diaria_alimentacao_obs',
                                                 'id' => 'atividades_vida_diaria_alimentacao_obs',
-                                                'value' => $prontuario->get_atividades_vida_diaria_alimentacao_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1171,7 +1131,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $atividades_vida_diaria_higiene = $prontuario->pegarOpcoesParaProntuario('atividades_vida_diaria_higiene');
-                                                    echo pront_radio_input($atividades_vida_diaria_higiene, $prontuario->get_atividades_vida_diaria_higiene()); ?>
+                                                    echo pront_radio_input( $atividades_vida_diaria_higiene ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1184,7 +1144,6 @@
                                     <?php   $atividades_vida_diaria_higiene_obs = array(
                                                 'name' => 'atividades_vida_diaria_higiene_obs',
                                                 'id' => 'atividades_vida_diaria_higiene_obs',
-                                                'value' => $prontuario->get_atividades_vida_diaria_higiene_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1200,7 +1159,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $atividades_vida_diaria_vestuario = $prontuario->pegarOpcoesParaProntuario('atividades_vida_diaria_vestuario');
-                                                    echo pront_radio_input($atividades_vida_diaria_vestuario, $prontuario->get_atividades_vida_diaria_vestuario()); ?>
+                                                    echo pront_radio_input( $atividades_vida_diaria_vestuario ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1213,7 +1172,6 @@
                                     <?php   $atividades_vida_diaria_vestuario_obs = array(
                                                 'name' => 'atividades_vida_diaria_vestuario_obs',
                                                 'id' => 'atividades_vida_diaria_vestuario_obs',
-                                                'value' => $prontuario->get_atividades_vida_diaria_vestuario_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1228,7 +1186,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <?php   $atividades_vida_diaria_locomocao = $prontuario->pegarOpcoesParaProntuario('atividades_vida_diaria_locomocao');
-                                                    echo pront_radio_input($atividades_vida_diaria_locomocao, $prontuario->get_atividades_vida_diaria_locomocao()); ?>
+                                                    echo pront_radio_input( $atividades_vida_diaria_locomocao ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1241,7 +1199,6 @@
                                     <?php   $atividades_vida_diaria_locomocao_obs = array(
                                                 'name' => 'atividades_vida_diaria_locomocao_obs',
                                                 'id' => 'atividades_vida_diaria_locomocao_obs',
-                                                'value' => $prontuario->get_atividades_vida_diaria_locomocao_obs(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1272,7 +1229,6 @@
                                     <?php   $sistema_respiratorio = array(
                                                 'name' => 'sistema_respiratorio',
                                                 'id' => 'sistema_respiratorio',
-                                                'value' => $prontuario->get_sistema_respiratorio(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1303,7 +1259,6 @@
                                     <?php   $objetivos = array(
                                                 'name' => 'objetivos',
                                                 'id' => 'objetivos',
-                                                'value' => $prontuario->get_objetivos(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1333,7 +1288,6 @@
                                     <?php $condutas = array(
                                                 'name' => 'condutas',
                                                 'id' => 'condutas',
-                                                'value' => $prontuario->get_condutas(),
                                                 'rows' => 3,
                                                 'class' => 'form-control'
                                             );
@@ -1364,7 +1318,6 @@
                                     <?php   $evolucao_periodo = array(
                                                 'name' => 'evolucao_periodo',
                                                 'id' => 'evolucao_periodo',
-                                                'value' => $prontuario->get_evolucao_periodo(),
                                                 'rows' => 15,
                                                 'class' => 'form-control'
                                             );

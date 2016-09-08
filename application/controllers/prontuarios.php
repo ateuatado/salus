@@ -90,15 +90,30 @@ class Prontuarios extends CI_Controller {
 
     }
 
+    public function cadastrar($id_paciente = null)
+    {
+        $paciente = $this->paciente->consultarPaciente( $id_paciente );
+
+
+        if( count($paciente) == 1 ) {
+            $data['paciente'] = ( is_array($paciente) ) ? $paciente[0] : $paciente;
+            $data['prontuario'] = $this->prontuario;
+            $this->load->view('prontuario-cadastrar', $data);
+        } else {
+            show_404();
+        }
+
+    }
+
     public function remover( $id_prontuario = null, $id_paciente = null) {
 
         if( !empty($id_prontuario) && !empty($id_paciente) ) {
 
             $resultado = $this->prontuario->remover( $id_prontuario );
             if($resultado == true) {
-                redirect('pacientes/consultar/' . $id_paciente . '/sucesso' );
+                redirect('pacientes/consultar/' . $id_paciente . '/sucesso#prontuarios' );
             } else {
-                redirect('pacientes/consultar/' . $id_paciente . '/erro' );
+                redirect('pacientes/consultar/' . $id_paciente . '/erro#prontuarios' );
             }
             
         } else {

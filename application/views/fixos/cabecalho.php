@@ -41,6 +41,9 @@ function trocaActive($nome_uri,$pagina)
             <li class="<?php echo trocaActive($nome_uri,'pacientes');?>">
               <a href="<?php echo base_url();?>pacientes">Pacientes</a>
             </li>
+            <li class="<?php echo trocaActive($nome_uri,'baterias');?>">
+              <a href="<?php echo base_url('baterias');?>">Baterias</a>
+            </li>
             <li class="<?php echo trocaActive($nome_uri,'estagiarios');?>">
               <a href="<?php echo base_url();?>estagiarios">Estagiários</a>
             </li>

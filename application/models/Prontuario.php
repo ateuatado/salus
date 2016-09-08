@@ -88,6 +88,8 @@ class Prontuario extends CI_Model{
     private $objetivos;
     private $condutas;
     private $evolucao_periodo;
+    private $data_atualizacao;
+    private $data_criacao;
 
     public function get_id_prontuario() {
         return $this->id_prontuario;
@@ -564,6 +566,24 @@ class Prontuario extends CI_Model{
     {
         $this->evolucao_periodo = $evolucao_periodo;
     }
+    public function get_data_atualizacao()
+    {
+        $date_ob = new DateTime($this->data_atualizacao);
+        return $date_ob->format("d/m/Y H:i");
+    }
+    public function set_data_atualizacao($data_atualizacao)
+    {
+        $this->data_atualizacao = $data_atualizacao;
+    }
+    public function get_data_criacao()
+    {
+        $date_ob = new DateTime($this->data_criacao);
+        return $date_ob->format("d/m/Y H:i");
+    }
+    public function set_data_criacao($data_criacao)
+    {
+        $this->data_criacao = $data_criacao;
+    }
 
     public function consultar($id_prontuario = null, Paciente $paciente = null, Usuario $usuario = null)
     {
@@ -642,6 +662,28 @@ class Prontuario extends CI_Model{
     {
         $resultado = $this->db->get_where('opcoes', array('id_opcoes' => $id_opcoes))->result_array();
         return ( !empty($resultado) ) ? $resultado[0]['opcao'] : '';
+    }
+
+    public function porcentoFeitoDoProntuario()
+    {
+        
+        $contador = 0;
+        $total = 0;
+        $vars = get_object_vars($this);
+        unset($vars['id_paciente'], $vars['id_usuario'], $vars['id_prontuario'], $vars['data_atualizacao'], $vars['data_criacao'] );
+
+        foreach($vars as $key => $value) {
+            if( strpos($key, 'obs') === false ) {
+                $total += 1;
+                if(!empty($value)) {
+                    $contador += 1;
+                }
+            } 
+        }
+
+        $x = (100 * $contador) / $total;
+        return round($x);
+
     }
 
 }

@@ -1,17 +1,55 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
 $primary-color: #339ACC;
 $text-color: #363636;
 $text-color2: #96A3B6;
+$font-family: 'Roboto', sans-serif;
 body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: $font-family;
 }
 
 *:focus {
     outline: none;
 }
 
-.prontuario{
-    .prontuario-topo{
+.popover{
+    font-family: $font-family;
+}
+
+.btn-style06{
+    font-family: inherit;
+    color: $primary-color;
+    border-color: $primary-color;
+    background-color: rgb(255, 255, 255);
+    font-weight: 500;
+
+    &:hover{
+        background-color: rgba(20%, 60.4%, 80%, 0.05);
+        color: $primary-color;
+    }
+}
+
+.btn-style07{
+    font-family: inherit;
+    color: $text-color2;
+    border-color: $text-color2;
+    background-color: rgb(255, 255, 255);
+    font-weight: 500;
+
+    &:hover{
+        background-color: rgba(58.8%, 63.9%, 71.4%, 0.05);
+        color: $text-color2;
+    }
+}
+
+.cor-texto-padrao-2{
+    color: $text-color;
+}
+
+.estilo-padrao{
+
+    .padrao-topo{
 
         height: 70px;
         line-height: 70px;
@@ -51,22 +89,20 @@ body{
         }
     }
 
-    .prontuario-info{
+    .padrao-info{
         line-height: 50px;
         height: 50px;
         border-bottom: 1px solid #e7ebf3;
-
-        .prontuario-criado-por{
-            p{
-                margin: 0;
-                font-size: 15px;
-                font-weight: 400;
-                color: $text-color2;
-            }
+        
+        p{
+            margin: 0;
+            font-size: 15px;
+            font-weight: 400;
+            color: $text-color2;
         }
     }
 
-    .prontuario-conteudo{
+    .padrao-conteudo{
 
         h4{
             margin: 0;
@@ -78,6 +114,7 @@ body{
         }
 
         .grupo-pront{
+
             padding: 40px 0;
             color: $text-color;
             border-bottom: 1px solid #e7ebf3;
@@ -118,5 +155,105 @@ body{
             }
         }
 
+        .topo-lista-personalizada, .rodape-lista-personalizada{
+            width: 100%;
+            display: inline-table;
+            margin-bottom: 13px;
+            font-size: 13px;
+            color: $text-color2;
+            font-weight: 600;
+        }
+
+        .titulo-lista-personalizada{
+            font-size: 15px;
+            color: $text-color;
+            font-weight: 500;
+
+            .info-lista-personalizada{
+                font-weight: 400;
+                font-size: 13px;
+                color: $text-color2;
+
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    list-style-position: inside;
+
+                    li{
+                        float: left;
+                        padding-left: 9px;
+
+                        &:first-child{
+                            padding-left: 0;
+                            list-style-type: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .acoes-lista-personalizada{
+            margin-top: 3px;
+        }
     }
+}
+
+.prontuario{ }
+
+.paciente{
+
+    .padrao-info{
+
+        .lista-abas{
+            display: inline-table;
+
+            li {
+                padding: 0;
+                margin-right: 20px;
+
+                a{
+                    padding: 0 7px;
+                    display: block;
+                    height: 50px;
+                    text-decoration: none;
+                    font-size: 15px;
+                    font-weight: 400;
+                    -moz-outline: 0;
+                    outline: 0;
+                    color: $text-color2;
+                }
+
+                &.active{
+
+                    a{
+                        color: $primary-color;
+                        border-bottom: 1px solid #339ACC;
+                    }
+
+                }
+                
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+        }
+
+    }
+
+    .padrao-conteudo{
+
+        .padrao-conteudo-section{
+            padding: 20px 0;
+        }
+
+    }
+    
+}
+
+.bateria{
+
+    .baterias-lista{
+        padding: 30px 0;
+    }
+
 }

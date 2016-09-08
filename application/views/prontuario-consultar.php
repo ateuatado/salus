@@ -1,8 +1,8 @@
 <?php $this->load->view('fixos/cabecalho'); ?>
 
-<div class="prontuario">
+<div class="prontuario estilo-padrao">
 
-    <section class="prontuario-topo">
+    <section class="padrao-topo">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
@@ -11,7 +11,7 @@
                             <a href="<?php echo base_url('pacientes/consultar'); ?>">Pacientes</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() ); ?>" class="text-capitalize">
+                            <a href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() . '#prontuarios' ); ?>" class="text-capitalize">
                                 <?php echo $prontuario->get_paciente()->get_nome_completo(); ?>
                             </a>
                         </li>
@@ -22,25 +22,25 @@
                 </div> <!-- cold-md-9 -->
                 <div class="col-md-3" id="opcoes_prontuario">
                     <div class="btn-group" role="group" aria-label="...">
-                        <a class="btn btn-default" href="<?php echo base_url('prontuarios/editar/' . $prontuario->get_id_prontuario() ); ?>">Editar</a>
+                        <a class="btn btn-style06" href="<?php echo base_url('prontuarios/editar/' . $prontuario->get_id_prontuario() ); ?>">Editar</a>
 
-                        <button type="button" class="btn btn-default" data-cancelar="#cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>" data-container="#opcoes_prontuario" data-toggle="popover" data-placement="bottom" data-html="true" data-content='
+                        <button type="button" class="btn btn-style06" data-cancelar="#cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>" data-container="#opcoes_prontuario" data-toggle="popover" data-placement="bottom" data-html="true" data-content='
                     
-                            Você realmente deseja remover esse prontuario? </br></br> 
-                            <button class="btn btn-default pull-left" id="cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>">Cancelar</button> 
+                            <span class="cor-texto-padrao-2">Você realmente deseja remover esse prontuario?</span> </br></br> 
+                            <button class="btn btn-style06 pull-left" id="cancelar_prontuario_<?php echo $prontuario->get_id_prontuario(); ?>">Cancelar</button> 
                             <a class="btn btn-danger pull-right" href="<?php echo base_url('prontuarios/remover/' . $prontuario->get_id_prontuario() . '/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Remover</a>   
                             </br></br>
 
                         '>Remover</button>
                         
-                        <a class="btn btn-default" href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() ); ?>">Voltar</a>
+                        <a class="btn btn-style06" href="<?php echo base_url('pacientes/consultar/' . $prontuario->get_paciente()->get_id_paciente() . '#prontuarios' ); ?>">Voltar</a>
                     </div>
                 </div> <!-- cold-md-3 -->
             </div> <!-- row -->
         </div> <!-- container -->
-    </section> <!-- prontuario-topo -->
+    </section> <!-- padrao-topo -->
 
-    <section class="prontuario-info">
+    <section class="padrao-info">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -50,9 +50,9 @@
                 </div>
             </div>
         </div>
-    </section> <!-- prontuario-info -->
+    </section> <!-- padrao-info -->
 
-    <section class="prontuario-conteudo">
+    <section class="padrao-conteudo">
         <div class="container">
 
                 <section class="grupo-pront adm">
@@ -97,6 +97,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_adm_cognitivo() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_adm_cognitivo_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_adm_cognitivo_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             
@@ -106,6 +114,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_adm_reflexos_prim() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_adm_reflexos_prim_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_adm_reflexos_prim_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                                 
@@ -250,6 +266,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_rolar() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_rolar_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_rolar_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                                 
@@ -459,8 +483,16 @@
                                 <label>Opções</label>
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                    <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_ortostatismo() ); ?>
+                                        <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_ortostatismo() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_ortostatismo_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_ortostatismo_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                                 
@@ -542,6 +574,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_tonus_base_hipertonia_elastica() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_tonus_base_hipertonia_plastica_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_tonus_base_hipertonia_elastica_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -569,6 +609,14 @@
                                     <div class="panel-body">
                                          <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_tonus_base_hipertonia_plastica() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_tonus_base_hipertonia_plastica_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_tonus_base_hipertonia_plastica_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -587,6 +635,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_tonus_base_discinesias() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_tonus_base_discinesias_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_tonus_base_discinesias_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -596,6 +652,14 @@
                                     <div class="panel-body">
                                         <?php echo $prontuario->pegarOpcaoUnica( $prontuario->get_tonus_base_hipotonia() ); ?>
                                     </div>
+                                    <?php if( $prontuario->get_tonus_base_hipotonia_obs() ):  ?>
+                                    <div class="panel-footer">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Descrição</div>
+                                            <input type="text" class="form-control" readonly="" value="<?php echo $prontuario->get_tonus_base_hipotonia_obs(); ?>">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             
@@ -943,7 +1007,7 @@
                 </section> <!-- condutas -->
 
         </div> <!-- container -->
-    </section> <!-- prontuario-conteudo -->
+    </section> <!-- padrao-conteudo -->
 
 </div> <!-- prontuario -->
 

@@ -13,7 +13,7 @@ class Pacientes extends CI_Controller {
 	public function index()
 	{
 		$data['pacientes'] = $this->paciente->consultarPaciente();
-		$this->load->view( 'pacientes', $data ); 
+		$this->load->view( 'paciente-consultar', $data ); 
 	}
 
 	public function consultar( $id_paciente = null, $mensagem = null) 
@@ -29,7 +29,7 @@ class Pacientes extends CI_Controller {
 				$data['prontuarios'] = $this->prontuario->consultar( null, $paciente );
 				$data['mensagem'] = $mensagem;
 
-				$this->load->view( 'paciente_unico', $data );
+				$this->load->view( 'paciente-consultar-unico', $data );
 
 			} else {
 
